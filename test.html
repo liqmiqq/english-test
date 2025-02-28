@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест на знание английского</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #c4b5fd, #a5b4fc, #fcd34d);
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #6d28d9;
+            font-size: 24px;
+        }
+        p {
+            font-size: 18px;
+            color: #4b5563;
+        }
+        .btn {
+            display: inline-block;
+            background: #7c3aed;
+            color: white;
+            padding: 12px 24px;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 10px;
+            transition: background 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+        .btn:hover {
+            background: #5b21b6;
+        }
+        .question {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Пройди тест и узнай свой уровень английского!</h1>
+        <p>Ответь на 20 вопросов, и мы определим твой уровень английского (A1-C1). В конце теста получишь результат и рекомендации!</p>
+        <div id="quiz">
+            <div class="question" id="q1">
+                <p>1. What ___ your name?</p>
+                <button class="btn" onclick="answer(1, 'q1')">is</button>
+                <button class="btn" onclick="answer(0, 'q1')">are</button>
+            </div>
+            <div class="question" id="q2">
+                <p>2. Choose the correct sentence:</p>
+                <button class="btn" onclick="answer(0, 'q2')">He go to school.</button>
+                <button class="btn" onclick="answer(1, 'q2')">He goes to school.</button>
+            </div>
+            <div class="question" id="q3">
+                <p>3. What is the past tense of "run"?</p>
+                <button class="btn" onclick="answer(1, 'q3')">ran</button>
+                <button class="btn" onclick="answer(0, 'q3')">runned</button>
+            </div>
+            <div class="question" id="q4">
+                <p>4. Which word is a synonym for "happy"?</p>
+                <button class="btn" onclick="answer(1, 'q4')">joyful</button>
+                <button class="btn" onclick="answer(0, 'q4')">angry</button>
+            </div>
+            <div class="question" id="q5">
+                <p>5. Which sentence is correct?</p>
+                <button class="btn" onclick="answer(0, 'q5')">She don’t like coffee.</button>
+                <button class="btn" onclick="answer(1, 'q5')">She doesn’t like coffee.</button>
+            </div>
+            <div id="result" style="display: none;">
+                <h2>Твой уровень: <span id="level"></span></h2>
+                <p id="recommendation"></p>
+                <p>Хочешь улучшить английский? Присоединяйся к <strong>ProBoost School</strong> и достигай новых высот!</p>
+            </div>
+            <button class="btn" onclick="startQuiz()" id="startBtn">Начать тест</button>
+        </div>
+    </div>
+    <script>
+        let score = 0;
+        let currentQuestion = 0;
+        const questions = document.querySelectorAll('.question');
+        
+        function startQuiz() {
+            document.getElementById('startBtn').style.display = 'none';
+            showQuestion(currentQuestion);
+        }
+        
+        function showQuestion(index) {
+            if (index < questions.length) {
+                questions[index].style.display = 'block';
+            } else {
+                showResult();
+            }
+        }
+        
+        function answer(point, id) {
+            score += point;
+            document.getElementById(id).style.display = 'none';
+            currentQuestion++;
+            showQuestion(currentQuestion);
+        }
+        
+        function showResult() {
+            let level = '';
+            let recommendation = '';
+            
+            if (score <= 4) {
+                level = 'A1 (Начинающий)';
+                recommendation = 'Начни с основ и построй прочный фундамент!';
+            } else if (score <= 8) {
+                level = 'A2 (Элементарный)';
+                recommendation = 'Развивай словарный запас и грамматику!';
+            } else if (score <= 12) {
+                level = 'B1 (Средний)';
+                recommendation = 'Пора учиться говорить уверенно!';
+            } else if (score <= 16) {
+                level = 'B2 (Выше среднего)';
+                recommendation = 'Доведем речь до уровня носителя!';
+            } else {
+                level = 'C1 (Продвинутый)';
+                recommendation = 'Выразительность и беглость как у профессионала!';
+            }
+            
+            document.getElementById('level').innerText = level;
+            document.getElementById('recommendation').innerText = recommendation;
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
