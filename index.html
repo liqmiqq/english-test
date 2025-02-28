@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест на знание английского</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #c4b5fd, #a5b4fc, #fcd34d);
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #6d28d9;
+            font-size: 24px;
+        }
+        p {
+            font-size: 18px;
+            color: #4b5563;
+        }
+        .btn {
+            display: inline-block;
+            background: #7c3aed;
+            color: white;
+            padding: 12px 24px;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 10px;
+            transition: background 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+        .btn:hover {
+            background: #5b21b6;
+        }
+        .question {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Пройди тест и узнай свой уровень английского!</h1>
+        <p>Ответь на 20 вопросов, и мы определим твой уровень английского (A1-C1). В конце теста получишь результат и рекомендации!</p>
+        <div id="quiz">
+            <div class="question" id="q1">
+                <p>1. What ___ your name?</p>
+                <button class="btn" onclick="answer(1, 'q1')">is</button>
+                <button class="btn" onclick="answer(0, 'q1')">are</button>
+                <button class="btn" onclick="answer(0, 'q1')">am</button>
+                <button class="btn" onclick="answer(0, 'q1')">be</button>
+            </div>
+            <div class="question" id="q2">
+                <p>2. Choose the correct sentence:</p>
+                <button class="btn" onclick="answer(0, 'q2')">He go to school.</button>
+                <button class="btn" onclick="answer(1, 'q2')">He goes to school.</button>
+            </div>
+            <div class="question" id="q3">
+                <p>3. What is the past tense of "run"?</p>
+                <button class="btn" onclick="answer(1, 'q3')">ran</button>
+                <button class="btn" onclick="answer(0, 'q3')">runned</button>
+            </div>
+            <div class="question" id="q4">
+                <p>4. Which word is a synonym for "happy"?</p>
+                <button class="btn" onclick="answer(0, 'q4')">pitiful</button>
+                <button class="btn" onclick="answer(0, 'q4')">angry</button>
+                <button class="btn" onclick="answer(1, 'q4')">joyful</button>
+                <button class="btn" onclick="answer(0, 'q4')">excited</button>
+            </div>
+            <div class="question" id="q5">
+                <p>5. I live ___ London.</p>
+                <button class="btn" onclick="answer(0, 'q5')">on</button>
+                <button class="btn" onclick="answer(1, 'q5')">in</button>
+                <button class="btn" onclick="answer(0, 'q5')">to</button>
+                <button class="btn" onclick="answer(0, 'q5')">at</button>
+            </div>
+             <div class="question" id="q6">
+                <p>6. Which sentence is correct?</p>
+                <button class="btn" onclick="answer(0, 'q6')">I never seen him.</button>
+                <button class="btn" onclick="answer(0, 'q6')">I never see him.</button>
+                 <button class="btn" onclick="answer(0, 'q6')">I have never saw him.</button>
+                <button class="btn" onclick="answer(1, 'q6')">I have never seen him.</button>
+            </div>
+            <div class="question" id="q7">
+                <p>7. If I ___ rich, I would travel the world.</p>
+                <button class="btn" onclick="answer(1, 'q7')">were</button>
+                <button class="btn" onclick="answer(0, 'q7')">will be</button>
+            </div>
+           <div class="question" id="q8">
+                <p>8. Which sentence is NOT correct?</p>
+                <button class="btn" onclick="answer(0, 'q8')">We didn’t went to the party.</button>
+                <button class="btn" onclick="answer(1, 'q8')">We didn’t go to the party.</button>
+               <button class="btn" onclick="answer(0, 'q8')">We didn’t go to a party.</button>
+            </div>
+            <div class="question" id="q9">
+                <p>9. She is very good ___ playing the piano.</p>
+                <button class="btn" onclick="answer(1, 'q9')">at</button>
+                <button class="btn" onclick="answer(0, 'q9')">on</button>
+               <button class="btn" onclick="answer(0, 'q9')">with</button>
+            </div>
+            <div class="question" id="q10">
+                <p>10. By the time we arrived, the movie ___ .</p>
+                <button class="btn" onclick="answer(0, 'q10')">has started</button>
+                <button class="btn" onclick="answer(0, 'q10')">started</button>
+               <button class="btn" onclick="answer(1, 'q10')">had started</button>
+            </div>
+            <div class="question" id="q11">
+                <p>11.Her argument was completely ___. It made no sense.</p>
+                <button class="btn" onclick="answer(1, 'q11')">irrational</button>
+                <button class="btn" onclick="answer(0, 'q11')"> irrelevant</button>
+               <button class="btn" onclick="answer(0, 'q11')">irresolute</button>
+            </div>
+            <div class="question" id="q12">
+                <p>12.Which sentence is correct?</p>
+                <button class="btn" onclick="answer(0, 'q12')">Having finished the project, a celebration was planned.</button>
+                <button class="btn" onclick="answer(1, 'q12')">Having finished the project, we planned a celebration.</button>
+               <button class="btn" onclick="answer(0, 'q12')">Having finished the project, the celebration was planned.</button>
+            </div>
+            <div class="question" id="q13">
+                <p>13.Not only ___ the concert, but she also got to meet the band!</p>
+                <button class="btn" onclick="answer(1, 'q13')">did she enjoy</button>
+                <button class="btn" onclick="answer(0, 'q13')">she enjoyed</button>
+               <button class="btn" onclick="answer(0, 'q13')">has she enjoyed</button>
+            </div>
+            <div class="question" id="q14">
+                <p>14.The experiment was unsuccessful, so we need to ___ our approach.</p>
+                <button class="btn" onclick="answer(1, 'q14')">rectify</button>
+                <button class="btn" onclick="answer(0, 'q14')">ratify</button>
+               <button class="btn" onclick="answer(0, 'q14')">recommend</button>
+            </div>
+            <div class="question" id="q15">
+                <p>15. He spoke so quietly that I could ___ hear him.</p>
+                <button class="btn" onclick="answer(0, 'q15')"> merely</button>
+                <button class="btn" onclick="answer(0, 'q15')">rarely</button>
+               <button class="btn" onclick="answer(1, 'q15')">hardly</button>
+            </div>
+            <div class="question" id="q16">
+                <p>16. Which word means “a person who takes risks”?</p>
+                <button class="btn" onclick="answer(0, 'q16')">entrepreuner</button>
+                <button class="btn" onclick="answer(1, 'q16')">gambler</button>
+               <button class="btn" onclick="answer(0, 'q16')">consultant</button>
+            </div>
+            <div class="question" id="q17">
+                <p>17. What’s the opposite of "compulsory"?</p>
+                <button class="btn" onclick="answer(1, 'q17')">optional</button>
+                <button class="btn" onclick="answer(0, 'q17')">unnecessary</button>
+               <button class="btn" onclick="answer(0, 'q17')">avoidable</button>
+            </div>
+            <div class="question" id="q18">
+                <p>18. Choose the correct phrasal verb: I didn’t understand, so I had to ___ the word in the dictionary.</p>
+                <button class="btn" onclick="answer(0, 'q18')">make up</button>
+                <button class="btn" onclick="answer(1, 'q18')">look up</button>
+               <button class="btn" onclick="answer(0, 'q18')">turn up</button>
+            </div>
+            <div class="question" id="q19">
+                <p>19. Which sentence is correct?</p>
+                <button class="btn" onclick="answer(1, 'q19')">The teacher made us rewrite the essay.</button>
+                <button class="btn" onclick="answer(0, 'q19')">The teacher made us wrote the essay.</button>
+               <button class="btn" onclick="answer(0, 'q19')"> The teacher made us to rewrite the essay.</button>
+            </div>
+            <div class="question" id="q20">
+                <p>20. If you hadn’t missed the train, we ___ on time.</p>
+                <button class="btn" onclick="answer(0, 'q20')">would arrive</button>
+                <button class="btn" onclick="answer(0, 'q20')">should arrive</button>
+               <button class="btn" onclick="answer(1, 'q20')">would have arrived</button>
+            </div>
+            <div id="result" style="display: none;">
+                <h2>Твой уровень: <span id="level"></span></h2>
+                <p id="recommendation"></p>
+                <p>Хочешь улучшить английский? Присоединяйся к <strong>ProBoost School</strong> и достигай новых высот!</p>
+            </div>
+            <button class="btn" onclick="startQuiz()" id="startBtn">Начать тест</button>
+        </div>
+    </div>
+    <script>
+        let score = 0;
+        let currentQuestion = 0;
+        const questions = document.querySelectorAll('.question');
+        
+        function startQuiz() {
+            document.getElementById('startBtn').style.display = 'none';
+            showQuestion(currentQuestion);
+        }
+        
+        function showQuestion(index) {
+            if (index < questions.length) {
+                questions[index].style.display = 'block';
+            } else {
+                showResult();
+            }
+        }
+        
+        function answer(point, id) {
+            score += point;
+            document.getElementById(id).style.display = 'none';
+            currentQuestion++;
+            showQuestion(currentQuestion);
+        }
+        
+        function showResult() {
+            let level = '';
+            let recommendation = '';
+            
+            if (score <= 4) {
+                level = 'A1 (Начинающий)';
+                recommendation = 'Начни с основ и построй прочный фундамент!';
+            } else if (score <= 8) {
+                level = 'A2 (Элементарный)';
+                recommendation = 'Развивай словарный запас и грамматику!';
+            } else if (score <= 12) {
+                level = 'B1 (Средний)';
+                recommendation = 'Пора учиться говорить уверенно!';
+            } else if (score <= 16) {
+                level = 'B2 (Выше среднего)';
+                recommendation = 'Доведем речь до уровня носителя!';
+            } else {
+                level = 'C1 (Продвинутый)';
+                recommendation = 'Выразительность и беглость как у профессионала!';
+            }
+            
+            document.getElementById('level').innerText = level;
+            document.getElementById('recommendation').innerText = recommendation;
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
